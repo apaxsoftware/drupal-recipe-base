@@ -45,6 +45,9 @@ install:
   - metatag
   - metatag_open_graph
   - metatag_verification
+  - apax_tailwind
+  - components
+  - twig_tweak
 
 config:
   import:
@@ -107,4 +110,4 @@ config:
     system.theme:
       simple_config_update:
         admin: 'gin'
-        default: 'stark'
+        default: 'apax_tailwind'
