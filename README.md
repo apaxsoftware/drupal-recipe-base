@@ -1,29 +1,32 @@
-# README #
+## Base Recipe
 
-This README would normally document whatever steps are necessary to get your application up and running.
+This recipe is designed to do the following:
 
-### What is this repository for? ###
+- Install certain parts of Standard install profile that we want
+- Disable core modules we don't want
+- Set specific contributed module configuration
+- Provide a starting point for Drupal ready to develop features for without
+  wasting too much time on the post-install ceremony.
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+## Installing
 
-### How do I get set up? ###
+- Start with a Drupal 10 site.
+- Install the 'Minimal' profile.
+- Apply the recipe
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+The recipe can be applied with PHP in Drupal 10.3+.
 
-### Contribution guidelines ###
+Execute this command from the web root:
 
-* Writing tests
-* Code review
-* Other guidelines
+```shell
+lando php web/core/scripts/drupal recipe web/recipes/contrib/[repo-name] -v
+```
 
-### Who do I talk to? ###
+If all goes well, you should see the following output:
 
-* Repo owner or admin
-* Other community or team contact
+```shell
+ [OK] Drupal Base applied successfully
+```
+
+Clear the cache after the recipe is applied. When going back to the site,
+all the recipe configuration and customization has been applied.
