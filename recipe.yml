@@ -48,6 +48,8 @@ install:
   - apax_tailwind
   - components
   - twig_tweak
+  - serialization
+  - sdc
 
 config:
   import:
