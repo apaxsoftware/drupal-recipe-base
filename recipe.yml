@@ -50,6 +50,20 @@ install:
   - twig_tweak
   - serialization
   - sdc
+  - better_permissions_page
+  - coffee
+  - easy_responsive_images
+  - exif_orientation
+  - focal_point
+  - imageapi_optimize_webp
+  - maxlength
+  - nomarkup
+  - paragraphs
+  - publication_date
+  - rabbit_hole
+  - simple_sitemap
+  - admin_toolbar
+  - admin_toolbar_tools
 
 config:
   import:
