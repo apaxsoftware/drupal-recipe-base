@@ -46,7 +46,6 @@ install:
   - metatag_open_graph
   - metatag_verification
   - apax_tailwind
-  - components
   - twig_tweak
   - serialization
   - sdc
