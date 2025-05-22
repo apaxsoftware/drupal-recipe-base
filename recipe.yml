@@ -63,6 +63,7 @@ install:
   - simple_sitemap
   - admin_toolbar
   - admin_toolbar_tools
+  - tour
 
 config:
   import:
