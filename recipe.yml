@@ -1,69 +1,93 @@
 name: 'Drupal Base'
-description: 'A recipe tailored to best practices for kickstarting a new Drupal 10 project.'
+description: 'Core modules and configuration for a new Drupal 10 project.'
 type: 'Site'
 
+input:
+  site_name:
+    data_type: string
+    description: 'The name of the site.'
+    constraints:
+      NotBlank: []
+    prompt:
+      method: ask
+      arguments:
+        question: 'What is the name of your site?'
+    default:
+      source: value
+      value: 'My Drupal Site'
+  site_mail:
+    data_type: string
+    description: 'The email address for the site.'
+    constraints:
+      NotBlank: []
+      Email: []
+    prompt:
+      method: ask
+      arguments:
+        question: 'What is the site email address?'
+    default:
+      source: value
+      value: 'admin@example.com'
+  site_slogan:
+    data_type: string
+    description: 'The slogan for the site.'
+    prompt:
+      method: ask
+      arguments:
+        question: 'What is the site slogan? (optional)'
+    default:
+      source: value
+      value: ''
+
 install:
-  - config
-  - node
-  - user
-  - text
-  - link
-  - filter
+  - automated_cron
+  - big_pipe
   - block
   - block_content
   - ckeditor5
+  - claro
+  - config
   - contextual
-  - menu_link_content
   - datetime
-  - editor
-  - image
-  - menu_ui
-  - options
-  - path
-  - dynamic_page_cache
-  - big_pipe
-  - taxonomy
   - dblog
-  - toolbar
+  - dynamic_page_cache
   - field_ui
+  - editor
+  - filter
+  - image
+  - link
   - media
   - media_library
+  - menu_link_content
+  - menu_ui
+  - node
+  - options
+  - path
+  - redirect
+  - serialization
+  - taxonomy
+  - text
+  - toolbar
+  - tour
+  - user
   - views
   - views_ui
-  - automated_cron
-  - claro
-  - gin
-  - gin_login
-  - gin_toolbar
-  - config_ignore
-  - pathauto
-  - memcache
-  - redirect
-  - robotstxt
-  - menu_block
-  - csp
-  - metatag
-  - metatag_open_graph
-  - metatag_verification
-  - apax_tailwind
-  - twig_tweak
-  - serialization
-  - sdc
+  - admin_toolbar
+  - admin_toolbar_tools
   - better_permissions_page
   - coffee
+  - config_ignore
+  - config_split
   - easy_responsive_images
   - exif_orientation
   - focal_point
+  - gin
+  - gin_login
+  - gin_toolbar
   - imageapi_optimize_webp
   - maxlength
-  - nomarkup
-  - paragraphs
+  - pathauto
   - publication_date
-  - rabbit_hole
-  - simple_sitemap
-  - admin_toolbar
-  - admin_toolbar_tools
-  - tour
 
 config:
   import:
@@ -126,4 +150,8 @@ config:
     system.theme:
       simple_config_update:
         admin: 'gin'
-        default: 'apax_tailwind'
+    system.site:
+      simple_config_update:
+        name: ${site_name}
+        mail: ${site_mail}
+        slogan: ${site_slogan}
