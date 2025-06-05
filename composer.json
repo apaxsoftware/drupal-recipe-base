@@ -19,6 +19,6 @@
     "drupal/imageapi_optimize_webp": "^2.0",
     "drupal/pathauto": "^1.0",
     "drupal/maxlength": "^3.1",
-    "drupal/publication_date": "^1.0"
+    "drupal/publication_date": "^3.0"
   }
 }
