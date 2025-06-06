@@ -1,0 +1,16 @@
+uuid: a5b020ee-5ecf-4cca-bca6-3eee9233b298
+langcode: en
+status: true
+dependencies: {  }
+name: responsive_2150w
+label: responsive_2150w
+effects:
+  1b2e8dc9-0c98-4c0a-8128-10608e09a4fa:
+    uuid: 1b2e8dc9-0c98-4c0a-8128-10608e09a4fa
+    id: image_scale
+    weight: null
+    data:
+      width: 2150
+      height: null
+      upscale: true
+pipeline: __default__

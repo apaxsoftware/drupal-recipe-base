@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: responsive_1250w
+label: responsive_1250w
+effects:
+  02879bb8-4e9f-413d-b9a0-19998ab6106b:
+    id: image_scale
+    weight: null
+    data:
+      width: 1250
+      height: null
+      upscale: true
+pipeline: __default__

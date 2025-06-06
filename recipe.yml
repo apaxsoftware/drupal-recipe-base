@@ -95,6 +95,25 @@ config:
     image:
       - image.style.thumbnail
       - image.style.media_library
+      - image.style.responsive_650w
+      - image.style.responsive_950w
+      - image.style.responsive_1250w
+      - image.style.responsive_1550w
+      - image.style.responsive_1850w
+      - image.style.responsive_2150w
+      - image.style.responsive_1_1_650w
+      - image.style.responsive_1_1_950w
+      - image.style.responsive_1_1_1250w
+      - image.style.responsive_1_1_1550w
+      - image.style.responsive_1_1_1850w
+      - image.style.responsive_1_1_2150w
+      - image.style.responsive_4_3_650w
+      - image.style.responsive_4_3_950w
+      - image.style.responsive_4_3_1250w
+      - image.style.responsive_4_3_1550w
+      - image.style.responsive_4_3_1850w
+      - image.style.responsive_4_3_2150w
+    easy_responsive_images: '*'
     media: '*'
     media_library: '*'
     pathauto: '*'

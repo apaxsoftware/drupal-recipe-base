@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: responsive_1_1_950w
+label: responsive_1_1_950w
+effects:
+  81361ba3-0526-4acf-87b2-b1a23343f49c:
+    id: focal_point_scale_and_crop
+    weight: null
+    data:
+      width: 950
+      height: 950
+      crop_type: focal_point
+pipeline: __default__

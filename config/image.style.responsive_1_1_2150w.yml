@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: responsive_1_1_2150w
+label: responsive_1_1_2150w
+effects:
+  ba7973b6-b69c-490d-83e9-302b602a5040:
+    id: focal_point_scale_and_crop
+    weight: null
+    data:
+      width: 2150
+      height: 2150
+      crop_type: focal_point
+pipeline: __default__
