@@ -92,7 +92,9 @@ install:
 config:
   import:
     dblog: '*'
-    image: '*'
+    image:
+      - image.style.thumbnail
+      - image.style.media_library
     media: '*'
     media_library: '*'
     pathauto: '*'
@@ -113,6 +115,8 @@ config:
       - block.block.gin_page_title
       - block.block.gin_primary_local_tasks
       - block.block.gin_secondary_local_tasks
+    config_split:
+      - config_split.config_split.local
     admin_toolbar:
       - admin_toolbar.settings
     admin_toolbar_tools:

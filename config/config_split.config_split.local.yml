@@ -1,0 +1,16 @@
+uuid: 400260e8-73bb-4de3-b6cc-b36d3c477770
+langcode: en
+status: false
+dependencies: {  }
+id: local
+label: Local
+description: ''
+weight: 0
+stackable: false
+no_patching: false
+storage: folder
+folder: ../config/local
+module: {  }
+theme: {  }
+complete_list: {  }
+partial_list: {  }
