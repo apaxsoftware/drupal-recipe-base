@@ -113,6 +113,20 @@ config:
       - block.block.gin_page_title
       - block.block.gin_primary_local_tasks
       - block.block.gin_secondary_local_tasks
+    admin_toolbar:
+      - admin_toolbar.settings
+    admin_toolbar_tools:
+      - admin_toolbar_tools.settings
+    coffee:
+      - coffee.configuration
+    gin_login:
+      - gin_login.settings
+    focal_point:
+      - focal_point.settings
+    crop:
+      - crop.settings
+    system:
+      - system.action.pathauto_update_alias_node
   actions:
     block.block.gin_admin:
       simple_config_update:
