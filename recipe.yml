@@ -68,7 +68,6 @@ install:
   - taxonomy
   - text
   - toolbar
-  - tour
   - user
   - views
   - views_ui
@@ -129,6 +128,7 @@ config:
       - gin.settings
       - block.block.gin_breadcrumbs
       - block.block.gin_content
+      - block.block.gin_help
       - block.block.gin_local_actions
       - block.block.gin_messages
       - block.block.gin_page_title
@@ -148,22 +148,22 @@ config:
       - focal_point.settings
     crop:
       - crop.settings
+      - crop.type.focal_point
     system:
       - system.action.pathauto_update_alias_node
   actions:
-    block.block.gin_admin:
+    system.site:
       simple_config_update:
-        status: false
-    block.block.gin_branding:
+        name: ${site_name}
+        mail: ${site_mail}
+        slogan: ${site_slogan}
+    system.theme:
       simple_config_update:
-        status: false
+        admin: 'gin'
     block.block.gin_local_actions:
       simple_config_update:
         region: content
         weight: -10
-    block.block.gin_local_tasks:
-      simple_config_update:
-        status: false
     block.block.gin_page_title:
       simple_config_update:
         region: header
@@ -172,9 +172,6 @@ config:
       simple_config_update:
         region: header
         weight: -5
-    block.block.gin_tools:
-      simple_config_update:
-        status: false
     node.settings:
       simple_config_update:
         use_admin_theme: true
@@ -184,11 +181,3 @@ config:
     automated_cron.settings:
       simple_config_update:
         interval: 0
-    system.theme:
-      simple_config_update:
-        admin: 'gin'
-    system.site:
-      simple_config_update:
-        name: ${site_name}
-        mail: ${site_mail}
-        slogan: ${site_slogan}
