@@ -1,4 +1,4 @@
-name: 'Apax Drupal Base'
+name: 'Apax Base Drupal Recipe'
 description: 'Core modules and configuration for a new Drupal 10 project.'
 type: 'Site'
 
@@ -40,22 +40,37 @@ input:
       value: ''
 
 install:
+  - admin_toolbar
+  - admin_toolbar_tools
   - automated_cron
+  - better_permissions_page
   - big_pipe
   - block
   - block_content
   - ckeditor5
   - claro
+  - coffee
   - config
+  - config_ignore
+  - config_split
   - contextual
   - datetime
   - dblog
   - dynamic_page_cache
-  - field_ui
+  - easy_responsive_images
   - editor
+  - exif_orientation
+  - field_ui
   - filter
+  - focal_point
+  - gin
+  - gin_login
+  - gin_toolbar
+  - help
   - image
+  - imageapi_optimize_webp
   - link
+  - maxlength
   - media
   - media_library
   - menu_link_content
@@ -63,6 +78,8 @@ install:
   - node
   - options
   - path
+  - pathauto
+  - publication_date
   - redirect
   - serialization
   - taxonomy
@@ -71,22 +88,6 @@ install:
   - user
   - views
   - views_ui
-  - admin_toolbar
-  - admin_toolbar_tools
-  - better_permissions_page
-  - coffee
-  - config_ignore
-  - config_split
-  - easy_responsive_images
-  - exif_orientation
-  - focal_point
-  - gin
-  - gin_login
-  - gin_toolbar
-  - imageapi_optimize_webp
-  - maxlength
-  - pathauto
-  - publication_date
 
 config:
   import:
