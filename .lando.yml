@@ -1,4 +1,4 @@
-name: recipe-base
+name: apax-recipe-base
 recipe: drupal11
 config:
   php: "8.3"
@@ -11,8 +11,9 @@ services:
   appserver:
     app_mount: disabled
     environment:
-      DRUPAL_RECIPE_NAME: apax/base
-      DRUPAL_RECIPE_PATH: &recipe-path /var/www/recipes/local-recipe
+      RECIPE_NAME: apax_recipe_base
+      RECIPE_FQN: apax/apax_recipe_base
+      RECIPE_PATH: &recipe-path /var/www/recipe
     volumes:
       - type: bind
         source: $PWD
@@ -20,12 +21,12 @@ services:
     build:
       - composer create-project drupal/recommended-project:^10 /app
       - composer config minimum-stability dev
-      - composer config repositories.local-recipe --json "{\"type\":\"path\",\"url\":\"$DRUPAL_RECIPE_PATH\"}"
-      - composer require --no-interaction drush/drush $DRUPAL_RECIPE_NAME
+      - composer config repositories.$RECIPE_NAME --json "{\"type\":\"path\",\"url\":\"$RECIPE_PATH\"}"
+      - composer require --no-interaction drush/drush $RECIPE_FQN
       #- composer require --no-interaction --dev kevinquillen/recipe-generator:^2.0
     run:
       - |
-        drush site:install $DRUPAL_RECIPE_PATH \
+        drush site:install /app/web/recipes/$RECIPE_NAME \
           --db-url='mysql://drupal:drupal@database/drupal' \
           --account-name='admin' \
           --account-pass='admin' \
@@ -41,4 +42,4 @@ tooling:
   cex:
     description: Drupal config export
     service: appserver
-    cmd: drush cex --destination $DRUPAL_RECIPE_PATH/.config-export
+    cmd: drush cex -y --destination "$RECIPE_PATH/.config-export"

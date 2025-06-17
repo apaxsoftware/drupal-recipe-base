@@ -1,6 +1,6 @@
 {
-  "name": "apax/base",
-  "description": "Core modules and configuration for a new Drupal 10 project.",
+  "name": "apax/apax_recipe_base",
+  "description": "A base recipe with common modules and configuration for Drupal 10 projects.",
   "type": "drupal-recipe",
   "license": "GPL-2.0-or-later",
   "require": {

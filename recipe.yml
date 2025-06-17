@@ -1,4 +1,4 @@
-name: 'Drupal Base'
+name: 'Apax Drupal Base'
 description: 'Core modules and configuration for a new Drupal 10 project.'
 type: 'Site'
 
@@ -153,31 +153,31 @@ config:
       - system.action.pathauto_update_alias_node
   actions:
     system.site:
-      simple_config_update:
+      simpleConfigUpdate:
         name: ${site_name}
         mail: ${site_mail}
         slogan: ${site_slogan}
     system.theme:
-      simple_config_update:
+      simpleConfigUpdate:
         admin: 'gin'
     block.block.gin_local_actions:
-      simple_config_update:
+      simpleConfigUpdate:
         region: content
         weight: -10
     block.block.gin_page_title:
-      simple_config_update:
+      simpleConfigUpdate:
         region: header
         weight: -10
     block.block.gin_primary_local_tasks:
-      simple_config_update:
+      simpleConfigUpdate:
         region: header
         weight: -5
     node.settings:
-      simple_config_update:
+      simpleConfigUpdate:
         use_admin_theme: true
     user.settings:
-      simple_config_update:
+      simpleConfigUpdate:
         register: admin_only
     automated_cron.settings:
-      simple_config_update:
+      simpleConfigUpdate:
         interval: 0
