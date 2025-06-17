@@ -56,3 +56,18 @@ all the recipe configuration and customization has been applied.
 ## Building Recipes
 
 Here's the Drupal guide to [building recipes](https://project.pages.drupalcode.org/distributions_recipes/recipe_author_guide.html).
+
+## Local Development
+
+This project uses Lando for local development. Starting Lando will install containerized Drupal site with the recipe
+applied. You can start Lando with the following command:
+
+```shell
+lando start
+```
+
+Reinstall the site and reapply the recipe with the following command:
+
+```shell
+lando rebuild
+```

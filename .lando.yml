@@ -1,0 +1,44 @@
+name: recipe-base
+recipe: drupal11
+config:
+  php: "8.3"
+  via: apache:2.4
+  database: mysql:8.0
+  drush: ^13
+  composer_version: 2-latest
+  webroot: web
+services:
+  appserver:
+    app_mount: disabled
+    environment:
+      DRUPAL_RECIPE_NAME: apax/base
+      DRUPAL_RECIPE_PATH: &recipe-path /var/www/recipes/local-recipe
+    volumes:
+      - type: bind
+        source: $PWD
+        target: *recipe-path
+    build:
+      - composer create-project drupal/recommended-project:^10 /app
+      - composer config minimum-stability dev
+      - composer config repositories.local-recipe --json "{\"type\":\"path\",\"url\":\"$DRUPAL_RECIPE_PATH\"}"
+      - composer require --no-interaction drush/drush $DRUPAL_RECIPE_NAME
+      #- composer require --no-interaction --dev kevinquillen/recipe-generator:^2.0
+    run:
+      - |
+        drush site:install $DRUPAL_RECIPE_PATH \
+          --db-url='mysql://drupal:drupal@database/drupal' \
+          --account-name='admin' \
+          --account-pass='admin' \
+          --account-mail='info@apaxsoftware.com' \
+          --yes
+  database:
+    creds:
+      user: drupal
+      password: drupal
+      database: drupal
+
+tooling:
+  cex:
+    description: Drupal config export
+    service: appserver
+    cmd: drush cex --destination $DRUPAL_RECIPE_PATH/.config-export
