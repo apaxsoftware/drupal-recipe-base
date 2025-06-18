@@ -11,22 +11,21 @@ services:
   appserver:
     app_mount: disabled
     environment:
+      RECIPE_VENDOR: apax
       RECIPE_NAME: recipe_apax_base
-      RECIPE_PKG: apax/recipe_apax_base
       RECIPE_PATH: &recipe-path /var/www/recipe
     volumes:
       - type: bind
         source: $PWD
         target: *recipe-path
     build:
-      - composer create-project drupal/recommended-project:^10 /app
+      - composer create-project drupal/recommended-project:^11 /app
       - composer config minimum-stability dev
       - composer config repositories.$RECIPE_NAME --json "{\"type\":\"path\",\"url\":\"$RECIPE_PATH\"}"
-      - composer require --no-interaction drush/drush $RECIPE_PKG
-      #- composer require --no-interaction --dev kevinquillen/recipe-generator:^2.0
+      - composer require --no-interaction drush/drush $RECIPE_VENDOR/$RECIPE_NAME
     run:
-      - |
-        drush site:install /app/recipes/$RECIPE_NAME \
+      - |-
+        drush site:install "/app/recipes/$RECIPE_NAME" \
           --db-url='mysql://drupal:drupal@database/drupal' \
           --account-name='admin' \
           --account-pass='admin' \
@@ -38,8 +37,7 @@ services:
       password: drupal
       database: drupal
 
-tooling:
-  cex:
+  config-export:
     description: Drupal config export
     service: appserver
     cmd: drush cex -y --destination "$RECIPE_PATH/.config-export"

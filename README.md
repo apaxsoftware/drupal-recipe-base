@@ -1,6 +1,6 @@
 ## APAX Base Drupal Recipe
 
-This is a Drupal 10 recipe with common modules and configuration for new projects.
+This is a Drupal 11 recipe with common modules and configuration for new projects.
 
 This [Drupal recipe](https://www.drupal.org/docs/extending-drupal/drupal-recipes) is designed to:
 

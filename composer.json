@@ -1,12 +1,10 @@
 {
   "name": "apax/recipe_apax_base",
-  "description": "A Drupal 10 recipe with common modules and configuration for new projects.",
+  "description": "A Drupal 11 recipe with common modules and configuration for new projects.",
   "type": "drupal-recipe",
   "keywords": [
     "recipe",
-    "drupal recipe",
-    "drupal decoupled",
-    "drupal decoupled recipe"
+    "drupal recipe"
   ],
   "license": "GPL-2.0-or-later",
   "require": {
