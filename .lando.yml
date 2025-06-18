@@ -11,8 +11,8 @@ services:
   appserver:
     app_mount: disabled
     environment:
-      RECIPE_NAME: recipe_apax_base
-      RECIPE_PKG: apax/recipe_apax_base
+      RECIPE_PKG_ORG: apax
+      RECIPE_PKG_NAME: recipe_apax_base
       RECIPE_PATH: &recipe-path /var/www/recipe
     volumes:
       - type: bind
@@ -21,12 +21,12 @@ services:
     build:
       - composer create-project drupal/recommended-project:^10 /app
       - composer config minimum-stability dev
-      - composer config repositories.$RECIPE_NAME --json "{\"type\":\"path\",\"url\":\"$RECIPE_PATH\"}"
-      - composer require --no-interaction drush/drush $RECIPE_PKG
+      - composer config repositories.$RECIPE_PKG_NAME --json "{\"type\":\"path\",\"url\":\"$RECIPE_PATH\"}"
+      - composer require --no-interaction drush/drush $RECIPE_PKG_ORG/$RECIPE_PKG_NAME
       #- composer require --no-interaction --dev kevinquillen/recipe-generator:^2.0
     run:
       - |
-        drush site:install /app/recipes/$RECIPE_NAME \
+        drush site:install "/app/recipes/$RECIPE_PKG_NAME" \
           --db-url='mysql://drupal:drupal@database/drupal' \
           --account-name='admin' \
           --account-pass='admin' \

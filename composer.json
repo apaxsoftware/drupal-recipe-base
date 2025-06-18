@@ -4,14 +4,10 @@
   "type": "drupal-recipe",
   "keywords": [
     "recipe",
-    "drupal recipe",
-    "drupal decoupled",
-    "drupal decoupled recipe"
+    "drupal recipe"
   ],
   "license": "GPL-2.0-or-later",
   "require": {
-    "drupal/admin_toolbar": "^3.6",
-    "drupal/admin_toolbar_tools": "^3.6",
     "drupal/better_permissions_page": "^1.0",
     "drupal/coffee": "^2.0",
     "drupal/config_ignore": "^3.0",

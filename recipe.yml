@@ -40,8 +40,6 @@ input:
       value: ''
 
 install:
-  - admin_toolbar
-  - admin_toolbar_tools
   - automated_cron
   - better_permissions_page
   - big_pipe
