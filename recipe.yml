@@ -1,5 +1,5 @@
 name: 'Apax Base Drupal Recipe'
-description: 'Core modules and configuration for a new Drupal 10 project.'
+description: 'Core modules and configuration for a new Drupal 11 project.'
 type: 'Site'
 
 input:
@@ -39,146 +39,145 @@ input:
       source: value
       value: ''
 
+recipes:
+  - core/recipes/page_content_type
+  - core/recipes/image_media_type
+  - core/recipes/standard_responsive_images
+  - core/recipes/basic_html_format_editor
+  - core/recipes/full_html_format_editor
+  - core/recipes/restricted_html_format
+  - core/recipes/administrator_role
+  - core/recipes/content_editor_role
+  - core/recipes/core_recommended_maintenance
+  - core/recipes/core_recommended_performance
+
 install:
-  - admin_toolbar
-  - admin_toolbar_tools
-  - automated_cron
-  - better_permissions_page
-  - big_pipe
-  - block
+  # Core
   - block_content
-  - ckeditor5
-  - claro
-  - coffee
   - config
-  - config_ignore
-  - config_split
   - contextual
   - datetime
-  - dblog
-  - dynamic_page_cache
-  - easy_responsive_images
-  - editor
-  - exif_orientation
   - field_ui
-  - filter
+  - help
+  - menu_link_content
+  - menu_ui
+  - options
+  - views_ui
+  # Contrib
+  - admin_toolbar
+  - admin_toolbar_tools
+  - better_permissions_page
+  - coffee
+  - config_ignore
+  - config_split
+  - easy_responsive_images
+  - exif_orientation
   - focal_point
   - gin
   - gin_login
   - gin_toolbar
-  - help
-  - image
   - imageapi_optimize_webp
-  - link
   - maxlength
-  - media
-  - media_library
-  - menu_link_content
-  - menu_ui
-  - node
-  - options
-  - path
   - pathauto
   - publication_date
   - redirect
-  - serialization
-  - taxonomy
-  - text
-  - toolbar
-  - user
-  - views
-  - views_ui
 
 config:
   import:
-    dblog: '*'
-    image:
-      - image.style.thumbnail
-      - image.style.media_library
-      - image.style.responsive_650w
-      - image.style.responsive_950w
-      - image.style.responsive_1250w
-      - image.style.responsive_1550w
-      - image.style.responsive_1850w
-      - image.style.responsive_2150w
-      - image.style.responsive_1_1_650w
-      - image.style.responsive_1_1_950w
-      - image.style.responsive_1_1_1250w
-      - image.style.responsive_1_1_1550w
-      - image.style.responsive_1_1_1850w
-      - image.style.responsive_1_1_2150w
-      - image.style.responsive_4_3_650w
-      - image.style.responsive_4_3_950w
-      - image.style.responsive_4_3_1250w
-      - image.style.responsive_4_3_1550w
-      - image.style.responsive_4_3_1850w
-      - image.style.responsive_4_3_2150w
-    easy_responsive_images: '*'
-    media: '*'
-    media_library: '*'
-    pathauto: '*'
-    redirect:
-      - redirect.settings
-      - system.action.redirect_delete_action
-      - views.view.redirect
+    # -- Core Modules -- #
+    block_content:
+      - views.view.block_content
+    menu_ui: '*'
+    # We only want a subset of the node imports from the page_content_type recipe.
     node:
+      - field.storage.node.body
+      - system.action.node_delete_action
+      - system.action.node_make_sticky_action
+      - system.action.node_make_unsticky_action
+      - system.action.node_promote_action
+      - system.action.node_publish_action
+      - system.action.node_save_action
+      - system.action.node_unpromote_action
+      - system.action.node_unpublish_action
       - views.view.content
     user:
       - views.view.user_admin_people
-    gin:
-      - gin.settings
-      - block.block.gin_breadcrumbs
-      - block.block.gin_content
-      - block.block.gin_help
-      - block.block.gin_local_actions
-      - block.block.gin_messages
-      - block.block.gin_page_title
-      - block.block.gin_primary_local_tasks
-      - block.block.gin_secondary_local_tasks
-    config_split:
-      - config_split.config_split.local
-    admin_toolbar:
-      - admin_toolbar.settings
-    admin_toolbar_tools:
-      - admin_toolbar_tools.settings
-    coffee:
-      - coffee.configuration
-    gin_login:
-      - gin_login.settings
-    focal_point:
-      - focal_point.settings
-    crop:
-      - crop.settings
-      - crop.type.focal_point
-    system:
-      - system.action.pathauto_update_alias_node
+
+    # -- Contrib Modules -- #
+    admin_toolbar: '*'
+    admin_toolbar_tools: '*'
+    better_permissions_page: '*'
+    coffee: '*'
+    config_ignore: '*'
+    config_split: '*'
+    easy_responsive_images: '*'
+    exif_orientation: '*'
+    focal_point: '*'
+    gin: '*'
+    gin_login: '*'
+    gin_toolbar: '*'
+    imageapi_optimize_webp: '*'
+    maxlength: '*'
+    pathauto: '*'
+    publication_date: '*'
+    redirect: '*'
+
   actions:
+    # Set the default timezone.
+    system.date:
+      simpleConfigUpdate:
+        timezone.default: America/New_York
+        timezone.user.configurable: false
+    # Set the site name, email, and slogan.
     system.site:
       simpleConfigUpdate:
         name: ${site_name}
         mail: ${site_mail}
         slogan: ${site_slogan}
+    # Set the admin theme to gin.
     system.theme:
       simpleConfigUpdate:
         admin: 'gin'
-    block.block.gin_local_actions:
-      simpleConfigUpdate:
-        region: content
-        weight: -10
-    block.block.gin_page_title:
-      simpleConfigUpdate:
-        region: header
-        weight: -10
-    block.block.gin_primary_local_tasks:
-      simpleConfigUpdate:
-        region: header
-        weight: -5
+        default: 'gin'
+    # Set the node settings to use the admin theme.
     node.settings:
       simpleConfigUpdate:
         use_admin_theme: true
+    # Users can only be created by an admin.
     user.settings:
       simpleConfigUpdate:
         register: admin_only
-    automated_cron.settings:
+    # Show local tasks in the admin toolbar.
+    admin_toolbar_tools.settings:
       simpleConfigUpdate:
-        interval: 0
+        show_local_tasks: true
+    # Set the gin settings to use sticky action buttons and auto dark mode.
+    gin.settings:
+      simpleConfigUpdate:
+        sticky_action_buttons: true
+        enable_darkmode: auto
+    # Set user role permissions.
+    user.role.anonymous:
+      grantPermission: 'access content'
+    user.role.authenticated:
+      grantPermissions:
+        - 'access content'
+        - 'delete own files'
+        - 'view own unpublished content'
+    user.role.content_editor:
+      grantPermissions:
+        - 'access content overview'
+        - 'access contextual links'
+        - 'access files overview'
+        - 'access toolbar'
+        - 'administer url aliases'
+        - 'create url aliases'
+        - 'delete own files'
+        - 'revert all revisions'
+        - 'view all revisions'
+        - 'view the administration theme'
+      grantPermissionsForEachNodeType:
+        - 'create %bundle content'
+        - 'delete %bundle revisions'
+        - 'delete own %bundle content'
+        - 'edit own %bundle content'
