@@ -6,45 +6,8 @@ config:
   database: mysql:8.0
   webroot: web
   composer_version: 2-latest
+
 services:
   appserver:
-    app_mount: disabled
     environment:
-      RECIPE_VENDOR: apax
-      RECIPE_NAME: recipe_apax_base
-      RECIPE_PATH: &recipe-path /var/www/recipe
-    volumes:
-      - type: bind
-        source: $PWD
-        target: *recipe-path
-    build:
-      - composer create-project drupal/recommended-project:^11 /app
-      - composer config minimum-stability dev
-      - composer config repositories.$RECIPE_NAME --json "{\"type\":\"path\",\"url\":\"$RECIPE_PATH\"}"
-      - composer require --no-interaction drush/drush $RECIPE_VENDOR/$RECIPE_NAME
-    run:
-      - |-
-        drush site:install "/app/recipes/$RECIPE_NAME" \
-          --db-url='mysql://drupal:drupal@database/drupal' \
-          --account-name='admin' \
-          --account-pass='admin' \
-          --account-mail='info@apaxsoftware.com' \
-          --yes
-  database:
-    creds:
-      user: drupal
-      password: drupal
-      database: drupal
-
-tooling:
-  export:
-    description: Drupal config export
-    service: appserver
-    cmd: drush cex -y --destination "$RECIPE_PATH/.config-export"
-  composer-updates:
-    description: Update major and minor versions in composer.json
-    service: appserver
-    cmd: |-
-      which composer || (tput setaf 1 && echo "Start Lando before running this command!" && tput sgr0 && exit 1)
-      echo "=== Checking for Available Updates ==="
-      composer outdated --direct --major-only
+      DRUSH_OPTIONS_URI: https://recipe-apax-base.lndo.site

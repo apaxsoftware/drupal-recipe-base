@@ -88,8 +88,8 @@ config:
     block_content:
       - views.view.block_content
     menu_ui: '*'
-    # We only want a subset of the node imports from the page_content_type recipe.
     node:
+      # We only want a subset of the node imports from the page_content_type recipe.
       - field.storage.node.body
       - system.action.node_delete_action
       - system.action.node_make_sticky_action
@@ -156,9 +156,16 @@ config:
       simpleConfigUpdate:
         sticky_action_buttons: true
         enable_darkmode: auto
-    # Set user role permissions.
+        classic_toolbar: vertical
+
+    # Set up user roles and permissions.
     user.role.anonymous:
+      setProperties:
+        weight: -10
       grantPermission: 'access content'
+    user.role.administrator:
+      setProperties:
+        weight: 10
     user.role.authenticated:
       grantPermissions:
         - 'access content'

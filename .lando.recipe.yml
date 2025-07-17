@@ -1,0 +1,8 @@
+name: recipe-apax-base
+x-vars:
+  - &recipe-name recipe_apax_base
+
+services:
+  appserver:
+    environment:
+      RECIPE_NAME: *recipe-name
