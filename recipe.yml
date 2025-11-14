@@ -57,30 +57,64 @@ install:
   - config
   - contextual
   - datetime
+  - datetime_range
+  - entity_reference_revisions
   - field_ui
   - help
   - menu_link_content
   - menu_ui
   - options
+  - taxonomy
+  - update
   - views_ui
   # Contrib
   - admin_toolbar
   - admin_toolbar_tools
   - better_permissions_page
+  - ckeditor5_plugin_pack
+  - ckeditor5_abbreviation
+  - ckeditor5_anchor
+  - ckeditor5_blockquote_style
+  - ckeditor5_bootstrap_accordion
+  - ckeditor5_bootstrap_tabs
+  - ckeditor5_call_outs
+  - ckeditor5_color
+  - ckeditor5_div
+  - ckeditor5_document_outline
+  - ckeditor5_embedded_content
+  - ckeditor5_font
+  - ckeditor5_font_size
+  - ckeditor5_fullscreen
+  - ckeditor5_highlight
+  - ckeditor5_icons
+  - ckeditor5_indent
+  - ckeditor5_liststyle
+  - ckeditor5_paste_filter
+  - ckeditor5_premium_features_notifications
+  - ckeditor5_reading_time
+  - ckeditor5_show_blocks
+  - ckeditor5_simple_box
+  - ckeditor5_template
   - coffee
   - config_ignore
   - config_split
   - easy_responsive_images
   - exif_orientation
   - focal_point
+  - fontawesome
   - gin
   - gin_login
   - gin_toolbar
   - imageapi_optimize_webp
   - maxlength
+  - metatag
+  - paragraphs
   - pathauto
   - publication_date
   - redirect
+  - webform
+  - webform_submission_export_import
+  - webform_ui
 
 config:
   import:
@@ -107,20 +141,25 @@ config:
     admin_toolbar: '*'
     admin_toolbar_tools: '*'
     better_permissions_page: '*'
+    ckeditor5_plugin_pack: '*'
     coffee: '*'
     config_ignore: '*'
     config_split: '*'
     easy_responsive_images: '*'
     exif_orientation: '*'
     focal_point: '*'
+    fontawesome: '*'
     gin: '*'
     gin_login: '*'
     gin_toolbar: '*'
     imageapi_optimize_webp: '*'
     maxlength: '*'
+    metatag: '*'
+    paragraphs: '*'
     pathauto: '*'
     publication_date: '*'
     redirect: '*'
+    webform: '*'
 
   actions:
     # Set the default timezone.
@@ -177,11 +216,18 @@ config:
         - 'access contextual links'
         - 'access files overview'
         - 'access toolbar'
+        - 'access webform overview'
+        - 'access webform submission user'
+        - 'administer taxonomy'
         - 'administer url aliases'
+        - 'create terms in tags'
         - 'create url aliases'
         - 'delete own files'
+        - 'delete terms in tags'
+        - 'edit terms in tags'
         - 'revert all revisions'
         - 'view all revisions'
+        - 'view own webform submission'
         - 'view the administration theme'
       grantPermissionsForEachNodeType:
         - 'create %bundle content'
