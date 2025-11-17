@@ -72,29 +72,14 @@ install:
   - admin_toolbar_tools
   - better_permissions_page
   - ckeditor5_plugin_pack
-  - ckeditor5_abbreviation
-  - ckeditor5_anchor
-  - ckeditor5_blockquote_style
-  - ckeditor5_bootstrap_accordion
-  - ckeditor5_bootstrap_tabs
-  - ckeditor5_call_outs
-  - ckeditor5_color
-  - ckeditor5_div
-  - ckeditor5_document_outline
-  - ckeditor5_embedded_content
-  - ckeditor5_font
-  - ckeditor5_font_size
-  - ckeditor5_fullscreen
-  - ckeditor5_highlight
-  - ckeditor5_icons
-  - ckeditor5_indent
-  - ckeditor5_liststyle
-  - ckeditor5_paste_filter
-  - ckeditor5_premium_features_notifications
-  - ckeditor5_reading_time
-  - ckeditor5_show_blocks
-  - ckeditor5_simple_box
-  - ckeditor5_template
+  - ckeditor5_plugin_pack_font
+  - ckeditor5_plugin_pack_fullscreen
+  - ckeditor5_plugin_pack_highlight
+  - ckeditor5_plugin_pack_indent_block
+  - ckeditor5_plugin_pack_page_break
+  - ckeditor5_plugin_pack_paste_markdown
+  - ckeditor5_plugin_pack_templates
+  - ckeditor5_plugin_pack_text_transformation
   - coffee
   - config_ignore
   - config_split
