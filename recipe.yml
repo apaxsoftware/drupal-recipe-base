@@ -134,7 +134,8 @@ config:
     exif_orientation: '*'
     focal_point: '*'
     fontawesome: '*'
-    gin: '*'
+    gin:
+      - gin.settings
     gin_login: '*'
     gin_toolbar: '*'
     imageapi_optimize_webp: '*'
