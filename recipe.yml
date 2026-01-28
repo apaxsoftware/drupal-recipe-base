@@ -176,12 +176,43 @@ config:
     admin_toolbar_tools.settings:
       simpleConfigUpdate:
         show_local_tasks: true
-    # Set the gin settings to use sticky action buttons and disable dark mode.
+
+    # Configure gin theme settings.
     gin.settings:
       simpleConfigUpdate:
-        sticky_action_buttons: true
-        enable_darkmode: false
+        enable_darkmode: '0'
         classic_toolbar: vertical
+        sticky_action_buttons: true
+        features.node_user_picture: true
+
+    # Configure gin block placements.
+    block.block.gin_content:
+      simpleConfigUpdate:
+        weight: -3
+    block.block.gin_local_actions:
+      simpleConfigUpdate:
+        weight: -4
+    block.block.gin_page_title:
+      simpleConfigUpdate:
+        region: header
+        weight: -3
+    block.block.gin_primary_local_tasks:
+      simpleConfigUpdate:
+        weight: -2
+
+    # Disable unwanted gin blocks.
+    block.block.gin_admin:
+      simpleConfigUpdate:
+        status: false
+    block.block.gin_branding:
+      simpleConfigUpdate:
+        status: false
+    block.block.gin_local_tasks:
+      simpleConfigUpdate:
+        status: false
+    block.block.gin_tools:
+      simpleConfigUpdate:
+        status: false
 
     # Set up user roles and permissions.
     user.role.anonymous:
