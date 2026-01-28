@@ -175,11 +175,11 @@ config:
     admin_toolbar_tools.settings:
       simpleConfigUpdate:
         show_local_tasks: true
-    # Set the gin settings to use sticky action buttons and auto dark mode.
+    # Set the gin settings to use sticky action buttons and disable dark mode.
     gin.settings:
       simpleConfigUpdate:
         sticky_action_buttons: true
-        enable_darkmode: auto
+        enable_darkmode: false
         classic_toolbar: vertical
 
     # Set up user roles and permissions.
