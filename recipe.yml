@@ -102,6 +102,9 @@ install:
   - webform_ui
 
 config:
+  strict:
+    - field.storage.node.field_components
+    - field.storage.paragraph.field_html
   import:
     # -- Core Modules -- #
     block_content:
@@ -183,6 +186,69 @@ config:
         classic_toolbar: vertical
         sticky_action_buttons: true
         features.node_user_picture: true
+
+    # Page content type: form display - hide body, add components.
+    core.entity_form_display.node.page.default:
+      hideComponent: body
+      setComponents:
+        - name: field_components
+          options:
+            type: paragraphs
+            weight: 121
+            region: content
+            settings:
+              title: Paragraph
+              title_plural: Paragraphs
+              edit_mode: open
+              closed_mode: summary
+              autocollapse: none
+              closed_mode_threshold: 0
+              add_mode: dropdown
+              form_display_mode: default
+              default_paragraph_type: _none
+              features:
+                add_above: '0'
+                collapse_edit_all: collapse_edit_all
+                convert: '0'
+                duplicate: duplicate
+            third_party_settings: {  }
+        - name: published_at
+          options:
+            type: publication_date_timestamp
+            weight: 10
+            region: content
+            settings: {  }
+            third_party_settings: {  }
+        - name: url_redirects
+          options:
+            weight: 50
+            region: content
+            settings: {  }
+            third_party_settings: {  }
+
+    # Page content type: view display - hide body, add components.
+    core.entity_view_display.node.page.default:
+      hideComponents:
+        - body
+        - published_at
+      setComponent:
+        name: field_components
+        options:
+          type: entity_reference_revisions_entity_view
+          label: above
+          settings:
+            view_mode: default
+            link: ''
+          third_party_settings: {  }
+          weight: 102
+          region: content
+
+    # Page content type: teaser display - hide body, components, published_at.
+    core.entity_view_display.node.page.teaser:
+      hideComponents:
+        - body
+        - field_components
+        - published_at
 
     # Configure gin block placements.
     block.block.gin_content:
