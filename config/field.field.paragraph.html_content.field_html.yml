@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_html
+    - paragraphs.paragraphs_type.html_content
+  module:
+    - text
+id: paragraph.html_content.field_html
+field_name: field_html
+entity_type: paragraph
+bundle: html_content
+label: HTML
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long
